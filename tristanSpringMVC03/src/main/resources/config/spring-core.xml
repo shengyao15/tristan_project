@@ -8,13 +8,13 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd 
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-<!-- 	<bean id="dataSource"
+	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
 		<property name="username" value="tristan" />
 		<property name="password" value="654321" />
-	</bean> -->
+	</bean> 
 
 <!-- http://blog.csdn.net/liyangbing315/article/details/4730961 -->
 <!-- ab -n 1000 -c 20 http://localhost:8085/tristanSpringMVC03/user/search -->
@@ -40,7 +40,7 @@
         <property name="initialPoolSize" value="10" />
 	</bean>  -->
 
-	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource" >
+<!-- 	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource" >
 	       <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 	       <property name="driverUrl" value="jdbc:oracle:thin:@localhost:1521:XE" />       
 	       <property name="user" value="tristan"/>
@@ -48,7 +48,7 @@
 	       <property name="prototypeCount" value="10" />
 	       <property name="maximumConnectionCount" value="100" />
 	       <property name="minimumConnectionCount" value="10" />
-	</bean> 
+	</bean> -->
 
 
 	<bean id="sessionFactory"
