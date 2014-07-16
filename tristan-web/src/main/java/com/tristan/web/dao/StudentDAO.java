@@ -25,6 +25,42 @@ public class StudentDAO {
 	private SessionFactory sessionFactory;
 	
 	
+	/**
+	 * --每门课程的最高分，最低分，平均分, 学选修的人数  
+select t2.cno, t2.cname, max(t3.grade), avg(t3.grade), min(t3.grade), count(t2.cno)  
+from   course t2, sc t3  
+where  t2.cno=t3.cno   
+group by t2.cno, t2.cname  
+order by  max(t3.grade) desc  
+	 * @return
+	 */
+	
+	public List listEachCourseGrade(){
+		String hql = "select  t2.cno, t2.cname, max(t3.grade) , avg(t3.grade), min(t3.grade), count(t2.cno) " +
+		" from Course as t2, SC as t3 " +
+		" where t2.cno=t3.scpk.cno" + 
+		" group by t2.cno, t2.cname " +
+		" order by count(t2.cno) desc";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		List list =  query.list(); 
+		
+		for (int i = 0; i < list.size(); i++) {
+			Object[] o = (Object[])list.get(i);
+			for (int j = 0; j < o.length; j++) {
+				System.out.print(o[j]+ "   ");
+				
+			}
+			System.out.println();
+			
+		}
+		return list;
+	}
+	
+	
+	
+	
 	public List search(StudentVO studentVO) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("select t1.sno, t1.sname,  t2.cno, t2.cname, t3.grade " +
@@ -76,8 +112,8 @@ public class StudentDAO {
 	public static void main(String[] args) {
 		//testA();
 		//testB();
-		//testC();
-		testD();
+		testC();
+		//testD();
 		
 	}
 
@@ -116,8 +152,11 @@ public class StudentDAO {
 		StudentDAO dao = new StudentDAO();
 		dao.sessionFactory =  new AnnotationConfiguration().configure("config/hibernateTest.cfg.xml").buildSessionFactory();
 		dao.sessionFactory.getCurrentSession().beginTransaction();
-		Student s = dao.find("001");
-		System.out.println(s.getSname());
+		
+//		Student s = dao.find("001");
+//		System.out.println(s.getSname());
+		
+		dao.listEachCourseGrade();
 	}
 
 	private static void testA() {

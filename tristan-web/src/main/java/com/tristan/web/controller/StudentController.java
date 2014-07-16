@@ -31,6 +31,12 @@ public class StudentController {
 	@Resource(name="studentService")
 	private StudentService studentService;
 	
+	@RequestMapping("/listEachCourseGrade")
+	public String listEachCourseGrade(HttpServletRequest request){
+		request.setAttribute("list", studentService.listEachCourseGrade());
+		return "/student/listEachCourseGrade";
+	}
+	
 	
 	@RequestMapping("/listAll")
 	public String find(HttpServletRequest request){

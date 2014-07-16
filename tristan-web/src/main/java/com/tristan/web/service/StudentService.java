@@ -17,6 +17,11 @@ public class StudentService {
 	@Autowired
 	private StudentDAO studentDao;
 	
+	public List listEachCourseGrade(){
+		return studentDao.listEachCourseGrade();
+		
+	}
+	
 	public List<StudentVO> listAll(){
 		List list = studentDao.listAll();
 		List<StudentVO> studentList = new ArrayList<StudentVO>();
