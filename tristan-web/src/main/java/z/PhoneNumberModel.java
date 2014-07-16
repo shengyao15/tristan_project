@@ -1,4 +1,4 @@
-package tristan;
+package z;
 
 public class PhoneNumberModel {  
     private String areaCode;//区号  

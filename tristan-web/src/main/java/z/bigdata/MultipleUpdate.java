@@ -1,4 +1,4 @@
-package com.tristan.bigdata;
+package z.bigdata;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

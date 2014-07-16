@@ -14,7 +14,11 @@
 		<property name="current_session_context_class">thread</property>
 		<!-- this will show us all sql statements -->
 		<property name="hibernate.show_sql">true</property>
-    	
+    	 <property name="hibernate.current_session_context_class">thread</property>
+    	 
 		 <mapping class="com.tristan.web.po.User"/>
+		 <mapping class="com.tristan.web.po.Student"/>
+		 <mapping class="com.tristan.web.po.Course"/>
+		 <mapping class="com.tristan.web.po.SC"/>
 	</session-factory>
 </hibernate-configuration>

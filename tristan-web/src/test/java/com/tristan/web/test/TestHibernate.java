@@ -3,6 +3,7 @@ package com.tristan.web.test;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 
 import com.tristan.web.po.User;
 
@@ -10,11 +11,11 @@ import com.tristan.web.po.User;
 public class TestHibernate {
 	
 	public static void main(String[] args) {
-		Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+		Session session = new AnnotationConfiguration().configure("hibernateTest.cfg.xml").buildSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		
 		User user = new User();//瞬态
-		user.setUserName("tristan");
+		user.setUserName("tristan4");
 		user.setAge(11);
 		
 		session.save(user);//持久态
