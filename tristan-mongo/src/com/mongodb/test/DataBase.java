@@ -1,4 +1,4 @@
-package com.mongodb.text;
+package com.mongodb.test;
 
 import java.net.UnknownHostException;
 

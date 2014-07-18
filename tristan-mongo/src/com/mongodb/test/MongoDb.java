@@ -1,4 +1,4 @@
-package com.mongodb.text;
+package com.mongodb.test;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class MongoDb {
 	    /**
 	     * 1.创建一个名字叫javadb的数据库
 	     */
-//		mongoDb.createCollection("javadb");
+		mongoDb.createCollection("javadb");
 		/**
 		 * 2.为集合javadb添加一条数据
 		 */
