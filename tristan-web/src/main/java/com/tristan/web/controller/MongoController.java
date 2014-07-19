@@ -1,36 +1,66 @@
 package com.tristan.web.controller;
 
-import java.net.UnknownHostException;
-
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.Mongo;
-import com.tristan.mongo.MongoOriginalDAO;
+import com.tristan.mongo.Score;
+import com.tristan.mongo.Student;
+import com.tristan.web.service.MongoService;
+
 
 @Controller
 @RequestMapping("/mongo")
 public class MongoController {
 	
+	@Resource(name="mongoService")
+	private MongoService mongoService;
+	
 	@RequestMapping("/list")
 	public String list(HttpServletRequest request){
 		try {
-			Mongo mg = new Mongo("127.0.0.1:27017");
-			DB db = mg.getDB("tristan");
-			DBCollection students = db.getCollection("students");
+			request.setAttribute("list", mongoService.listAll());
 			
-			MongoOriginalDAO dao = new MongoOriginalDAO();
-			//request.setAttribute("list", dao.list2(students));
+			Student student = new Student();
+			student.setScore(new Score());
+			request.setAttribute("student", student);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return "/student/listEachCourseGrade";
+		return "/mongo/listAllPage";
+	}
+	
+	@RequestMapping("/search")
+	public String search(HttpServletRequest request, @Valid Student student, BindingResult result){
+		try {
+			request.setAttribute("list", mongoService.search(student));
+			request.setAttribute("student", student);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "/mongo/listAllPage";
+	}
+	
+	@RequestMapping("/groupByCountry")
+	public String groupByCountry(HttpServletRequest request){
+		try {
+			request.setAttribute("list", mongoService.groupByCountry());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "/mongo/groupByCountry";
 	}
 }
