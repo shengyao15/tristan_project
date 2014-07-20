@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.tristan.web.po.User;
-import com.tristan.web.service.UserService;
+import com.tristan.web.po.hibernate.User;
+import com.tristan.web.service.hibernate.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/config/spring-core.xml"})

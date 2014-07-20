@@ -14,8 +14,8 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tristan.web.po.Student;
-import com.tristan.web.po.User;
+import com.tristan.web.po.hibernate.Student;
+import com.tristan.web.po.hibernate.User;
 
 @Repository
 public class TestStudentDAO {

@@ -1,4 +1,4 @@
-package com.tristan.web.controller;
+package com.tristan.web.controller.hibernate;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tristan.web.po.User;
-import com.tristan.web.service.UserService;
+import com.tristan.web.po.hibernate.User;
+import com.tristan.web.service.hibernate.UserService;
 
 @Controller
 @RequestMapping("/user")

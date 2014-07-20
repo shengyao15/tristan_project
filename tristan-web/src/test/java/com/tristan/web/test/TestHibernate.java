@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import com.tristan.web.po.User;
+import com.tristan.web.po.hibernate.User;
 
 
 public class TestHibernate {

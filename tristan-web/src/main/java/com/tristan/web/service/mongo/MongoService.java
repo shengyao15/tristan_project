@@ -1,4 +1,4 @@
-package com.tristan.web.service;
+package com.tristan.web.service.mongo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tristan.web.dao.MongoSpringDAO;
-import com.tristan.web.dao.StudentDAO;
-import com.tristan.web.dao.UserDAO;
-import com.tristan.web.po.StudentMongo;
-import com.tristan.web.po.User;
+import com.tristan.web.dao.hibernate.StudentDAO;
+import com.tristan.web.dao.hibernate.UserDAO;
+import com.tristan.web.dao.mongo.MongoSpringDAO;
+import com.tristan.web.po.hibernate.User;
+import com.tristan.web.po.mongo.StudentMongo;
 import com.tristan.web.vo.StudentVO;
 
 @Service

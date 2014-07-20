@@ -1,4 +1,4 @@
-package com.tristan.web.dao;
+package com.tristan.web.dao.hibernate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tristan.web.po.User;
+import com.tristan.web.po.hibernate.User;
 
 @Repository
 public class UserDAO {

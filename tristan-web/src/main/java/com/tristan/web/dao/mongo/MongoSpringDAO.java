@@ -1,4 +1,4 @@
-package com.tristan.web.dao;
+package com.tristan.web.dao.mongo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +17,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.DBObject;
-import com.tristan.web.po.ScoreMongo;
-import com.tristan.web.po.StudentMongo;
+import com.tristan.web.po.mongo.ScoreMongo;
+import com.tristan.web.po.mongo.StudentMongo;
 
 @Repository
 public class MongoSpringDAO {

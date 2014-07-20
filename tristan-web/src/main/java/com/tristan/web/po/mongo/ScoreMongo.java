@@ -1,4 +1,4 @@
-package com.tristan.web.po;
+package com.tristan.web.po.mongo;
 
 import com.mongodb.BasicDBObject;
 

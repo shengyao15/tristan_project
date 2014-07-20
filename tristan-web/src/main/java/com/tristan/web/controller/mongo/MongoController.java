@@ -1,4 +1,4 @@
-package com.tristan.web.controller;
+package com.tristan.web.controller.mongo;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tristan.web.po.ScoreMongo;
-import com.tristan.web.po.StudentMongo;
-import com.tristan.web.service.MongoService;
+import com.tristan.web.po.mongo.ScoreMongo;
+import com.tristan.web.po.mongo.StudentMongo;
+import com.tristan.web.service.mongo.MongoService;
 
 
 @Controller

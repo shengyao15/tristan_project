@@ -1,4 +1,4 @@
-package com.tristan.web.dao;
+package com.tristan.web.dao.redis;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import com.tristan.web.po.StudentJedis;
+import com.tristan.web.po.redis.StudentJedis;
 
 import redis.clients.jedis.Jedis;
 

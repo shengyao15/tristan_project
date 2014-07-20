@@ -1,4 +1,4 @@
-package com.tristan.web.controller;
+package com.tristan.web.controller.redis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tristan.web.dao.JedisDAO;
-import com.tristan.web.po.StudentJedis;
+import com.tristan.web.dao.redis.JedisDAO;
+import com.tristan.web.po.redis.StudentJedis;
 
 
 @Controller

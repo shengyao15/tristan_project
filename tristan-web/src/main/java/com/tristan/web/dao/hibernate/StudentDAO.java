@@ -1,4 +1,4 @@
-package com.tristan.web.dao;
+package com.tristan.web.dao.hibernate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tristan.web.po.Student;
-import com.tristan.web.po.User;
+import com.tristan.web.po.hibernate.Student;
+import com.tristan.web.po.hibernate.User;
 import com.tristan.web.vo.StudentVO;
 
 @Repository

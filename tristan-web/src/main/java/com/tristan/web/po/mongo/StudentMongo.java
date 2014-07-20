@@ -1,6 +1,7 @@
-package com.tristan.web.po;
+package com.tristan.web.po.mongo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 
 @Document(collection = "student")
