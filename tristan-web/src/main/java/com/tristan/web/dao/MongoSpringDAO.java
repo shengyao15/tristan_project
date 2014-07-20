@@ -17,8 +17,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.DBObject;
-import com.tristan.mongo.Score;
-import com.tristan.mongo.Student;
+import com.tristan.web.po.ScoreMongo;
+import com.tristan.web.po.StudentMongo;
 
 @Repository
 public class MongoSpringDAO {
@@ -46,10 +46,10 @@ public class MongoSpringDAO {
 	}
 
 	
-	public List<Student> listAll() {
-		List<Student> list = mongoTemplate.find(null, Student.class);
+	public List<StudentMongo> listAll() {
+		List<StudentMongo> list = mongoTemplate.find(null, StudentMongo.class);
 		
-		for (Student student : list) {
+		for (StudentMongo student : list) {
 			System.out.println(student.getName()+" " + student.getScore().getEnglish());
 		}
 		
@@ -57,7 +57,7 @@ public class MongoSpringDAO {
 	}
 
 
-	public List<Student> groupByCountry() {
+	public List<StudentMongo> groupByCountry() {
 	    
 	    AggregationOperation group = Aggregation.group("country")
 	     		.avg("score.english").as("english_avg")
@@ -67,14 +67,14 @@ public class MongoSpringDAO {
 	    AggregationResults<DBObject> result = mongoTemplate.aggregate(aggregation, "student", DBObject.class);
 		
 	    List<DBObject> list = result.getMappedResults();
-	    List<Student> stuList = new ArrayList<Student>();
+	    List<StudentMongo> stuList = new ArrayList<StudentMongo>();
 	    
 	    for (DBObject db : list) {
 			System.out.println(db.get("_id") +"  :  "+db.get("english_avg")+"  :  "+db.get("math_avg"));
-			Student student = new Student();
+			StudentMongo student = new StudentMongo();
 			student.setCountry((String)db.get("_id"));
 			
-			Score score = new Score();
+			ScoreMongo score = new ScoreMongo();
 			score.setEnglish(((Double)db.get("english_avg")).intValue());
 			score.setMath(((Double)db.get("math_avg")).intValue());
 			score.setChinese(((Double)db.get("chinese_avg")).intValue());
@@ -90,12 +90,12 @@ public class MongoSpringDAO {
 
 
 	public void drop() {
-		mongoTemplate.dropCollection(Student.class);
+		mongoTemplate.dropCollection(StudentMongo.class);
 	}
 
 
 
-	public List<Student> findByScore(Student student) {
+	public List<StudentMongo> findByScore(StudentMongo student) {
 		Query query = new Query();
 		
 		int english = student.getScore().getEnglish();
@@ -111,9 +111,9 @@ public class MongoSpringDAO {
 			query.addCriteria(new Criteria("score.chinese").gt(chinese));
 		}
 		
-		List<Student> list = mongoTemplate.find(query, Student.class);
+		List<StudentMongo> list = mongoTemplate.find(query, StudentMongo.class);
 		
-		for (Student s : list) {
+		for (StudentMongo s : list) {
 			System.out.println(s.getName()+" " + s.getScore().getEnglish());
 		}
 		
@@ -126,27 +126,27 @@ public class MongoSpringDAO {
 
 		Query query = new Query();
 		query.addCriteria(new Criteria("name").is("james"));
-		mongoTemplate.remove(query, Student.class);
+		mongoTemplate.remove(query, StudentMongo.class);
 	}
 
 
 
 	public void prepareData() {
 		
-		if (!mongoTemplate.collectionExists(Student.class)) {
-			mongoTemplate.createCollection(Student.class);
+		if (!mongoTemplate.collectionExists(StudentMongo.class)) {
+			mongoTemplate.createCollection(StudentMongo.class);
 		}
 		
 		Random r = new Random();
 		String[] country = {"USA", "China", "Japan"};
-		List<Student> list = new ArrayList<Student>();
+		List<StudentMongo> list = new ArrayList<StudentMongo>();
 		for (int i = 0; i < 50; i++) {
-			Student student = new Student();
+			StudentMongo student = new StudentMongo();
 			student.setName("s"+i);
 			student.setAge(r.nextInt(20));
 			student.setCountry(country[r.nextInt(3)]);
 			
-			Score score = new Score();
+			ScoreMongo score = new ScoreMongo();
 			score.setEnglish(30+r.nextInt(70));
 			score.setMath(30+r.nextInt(70));
 			score.setChinese(30+r.nextInt(70));
@@ -159,11 +159,11 @@ public class MongoSpringDAO {
 
 
 	public void demo() {
-		Student student = new Student();
+		StudentMongo student = new StudentMongo();
 		student.setName("james");
 		student.setAge(23);
 		
-		Score score = new Score();
+		ScoreMongo score = new ScoreMongo();
 		score.setChinese(34);
 		score.setEnglish(93);
 		score.setMath(66);
@@ -173,7 +173,7 @@ public class MongoSpringDAO {
 		
 		Query query = new Query();
 		query.addCriteria(new Criteria("name").is("james"));
-		Student s = mongoTemplate.findOne(query, Student.class);
+		StudentMongo s = mongoTemplate.findOne(query, StudentMongo.class);
 		System.out.println("English is " + s.getScore().getEnglish());
 	}
 }

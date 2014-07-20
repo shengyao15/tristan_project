@@ -1,12 +1,13 @@
-package com.tristan.mongo;
+package com.tristan.web.po;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "student")
-public class Student {
+public class StudentMongo {
 	private String name;
 	private int age;
-	private Score score;
+	private ScoreMongo score;
 	private String country;
 	
 	
@@ -28,10 +29,10 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public Score getScore() {
+	public ScoreMongo getScore() {
 		return score;
 	}
-	public void setScore(Score score) {
+	public void setScore(ScoreMongo score) {
 		this.score = score;
 	}
 	

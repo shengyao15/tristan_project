@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tristan.mongo.Score;
-import com.tristan.mongo.Student;
+import com.tristan.web.po.ScoreMongo;
+import com.tristan.web.po.StudentMongo;
 import com.tristan.web.service.MongoService;
 
 
@@ -25,8 +25,8 @@ public class MongoController {
 		try {
 			request.setAttribute("list", mongoService.listAll());
 			
-			Student student = new Student();
-			student.setScore(new Score());
+			StudentMongo student = new StudentMongo();
+			student.setScore(new ScoreMongo());
 			request.setAttribute("student", student);
 			
 		} catch (Exception e) {
@@ -38,7 +38,7 @@ public class MongoController {
 	}
 	
 	@RequestMapping("/search")
-	public String search(HttpServletRequest request, @Valid Student student, BindingResult result){
+	public String search(HttpServletRequest request, @Valid StudentMongo student, BindingResult result){
 		try {
 			request.setAttribute("list", mongoService.search(student));
 			request.setAttribute("student", student);

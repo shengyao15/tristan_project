@@ -1,8 +1,8 @@
-package com.tristan.mongo;
+package com.tristan.web.po;
 
 import com.mongodb.BasicDBObject;
 
-public class Score{
+public class ScoreMongo{
 	
 	private int english;
 	private int math;

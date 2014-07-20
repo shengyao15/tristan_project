@@ -1,4 +1,4 @@
-package com.tristan.mongo;
+package com.tristan.web.dao;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
