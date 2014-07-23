@@ -15,7 +15,7 @@ public class JedisDAO {
 	public static Jedis jedis;
 	
 	static{
-		jedis =  new Jedis("192.168.1.102", 6379);
+		jedis =  new Jedis("hbaseserver", 6379);
 	}
 	public static void main(String[] args) {
 		
@@ -41,7 +41,10 @@ public class JedisDAO {
 				student.setCountry(countrys[i]);
 				student.setEnglish(sum/l1.size());
 				list.add(student);
+				
 		}
+		
+		System.out.println(list.size());
 		return list;
 		
 	}

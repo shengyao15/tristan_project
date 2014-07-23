@@ -6,11 +6,9 @@
   </welcome-file-list>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath*:config/spring-mongo-mvc.xml,
-                 classpath*:config/spring-mongo.xml,
-                 classpath*:config/spring-redis-mvc.xml,
-                 classpath*:config/spring-hibernate-mvc.xml,
-                 classpath*:config/spring-hibernate.xml,
+    <param-value>
+                 classpath*:config/spring-mongo.xml
+                 
      </param-value>
   </context-param>
   <listener>
@@ -21,7 +19,9 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath*:config/spring-mvc.xml</param-value>
+      <param-value>classpath*:config/spring-mongo-mvc.xml,
+      				classpath*:config/spring-redis-mvc.xml
+      </param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
