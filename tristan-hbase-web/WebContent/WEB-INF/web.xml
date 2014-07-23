@@ -3,11 +3,6 @@
   <display-name>tristan-hbase-web</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -15,8 +10,18 @@
     <servlet-name>HBaseServlet</servlet-name>
     <servlet-class>com.tristan.web.servlet.HBaseServlet</servlet-class>
   </servlet>
+   <servlet>
+    <description></description>
+    <display-name>HiveServlet</display-name>
+    <servlet-name>HiveServlet</servlet-name>
+    <servlet-class>com.tristan.web.servlet.HiveServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>HBaseServlet</servlet-name>
     <url-pattern>/HBaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HiveServlet</servlet-name>
+    <url-pattern>/HiveServlet</url-pattern>
   </servlet-mapping>
 </web-app>
