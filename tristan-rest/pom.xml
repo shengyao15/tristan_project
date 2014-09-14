@@ -3,7 +3,7 @@
   <groupId>com.tristan</groupId>
   <artifactId>tristan-rest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+  <packaging>war</packaging>
   	<properties>
         <jje.bpcommon.version>0.3.0-SNAPSHOT</jje.bpcommon.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
@@ -60,6 +60,15 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>7.6.10.v20130312</version>
 			</plugin>
+			
+			 <plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-war-plugin</artifactId>
+ <version>2.4</version>
+ <configuration>
+ <warName>tristan-rest</warName>
+ </configuration>
+ </plugin>
 		</plugins>
 	</build>
 

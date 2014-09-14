@@ -12,12 +12,12 @@ public class Rename {
 	public static void main(String[] args) {
 		
 //		String name = "权力的游戏";
-		String name = "列王的纷争";
+//		String name = "列王的纷争";
 //		String name = "冰雨的风暴";
-//		String name = "群鸦的盛宴";
+		String name = "群鸦的盛宴";
 //		String name = "魔龙的狂舞";
 		
-		File f = new File("D:/"+name);
+		File f = new File("D:\\tristan\\ice-文本\\"+name);
 		File[] fs = f.listFiles();
 		
 		Set<String> set = new HashSet<String>();
@@ -25,7 +25,7 @@ public class Rename {
 			set.add(fs[i].getName());
 		}
 		
-		String name1 = "C:\\Users\\tristan\\"+name+"\\";
+		String name1 = "D:\\tristan\\ice-音频\\"+name+"\\";
 		File f1 = new File(name1);
 		File[] fs1 = f1.listFiles();
 		for (int i = 0; i < fs1.length; i++) {
