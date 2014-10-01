@@ -1,2 +1,7 @@
 jetty 插件  
 debug时需要远程调试  http://lsk.iteye.com/blog/582441
+
+访问
+http://localhost:8082/tristan-web/index.jsp
+
+

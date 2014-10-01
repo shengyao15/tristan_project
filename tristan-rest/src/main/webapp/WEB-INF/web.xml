@@ -22,10 +22,18 @@
         <servlet-name>Resteasy</servlet-name>
         <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>encode</servlet-name>
+        <servlet-class>com.tristan.encode.EncodeServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
+        <servlet-name>encode</servlet-name>
+        <url-pattern>/encode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Resteasy</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     
 </web-app>

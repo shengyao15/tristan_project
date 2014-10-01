@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -26,7 +29,10 @@ import com.tristan.web.service.hibernate.UserService;
 @RequestMapping("/user")
 public class UserController {
  
+	Logger logger = Logger.getLogger(UserController.class);
+	
 	@Resource(name="userService")
+	//@Autowired 
 	private UserService userService;
 	
 	@RequestMapping("/delete")
@@ -86,6 +92,9 @@ public class UserController {
 				System.out.println(error.getDefaultMessage());//验证信息
 			}
 		}*/
+		
+		logger.info(userService);
+		
 		
 		List<User> userList = userService.search(user);
 		request.setAttribute("user", user);

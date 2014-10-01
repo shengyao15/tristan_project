@@ -73,6 +73,11 @@
 
 	</bean>
 
+    <context:component-scan base-package="com.tristan.web.service.hibernate" />
+	<context:component-scan base-package="com.tristan.web.dao.hibernate" /> 
+	
+	
+		
 	<bean id="txManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -92,10 +97,9 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="services" />
 	</aop:config>
 
-	<context:component-scan base-package="com.tristan.web.service.hibernate" />
-	<context:component-scan base-package="com.tristan.web.dao.hibernate" /> 
 	
-	<bean id="performaceLog" class="com.tristan.web.utils.PerformaceLog"></bean>
+
+ 	<bean id="performaceLog" class="com.tristan.web.utils.PerformaceLog"></bean>
 	
 	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
 		<property name="beanNames">
@@ -110,6 +114,6 @@
 			</list>
 		</property>
 		<property name="proxyTargetClass" value="true" />
-	</bean> 
+	</bean>  
 
 </beans>

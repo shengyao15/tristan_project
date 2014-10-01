@@ -1,0 +1,19 @@
+GET - @Produces("text/plain;charset=UTF-8")
+http://localhost:8080/rest/score/queryChannelScore/aa   
+
+http://localhost:8080/score/queryChannelScore2
+<student>
+   <country>USA</country>
+   <age>12</age>
+</student>
+
+
+http://localhost:8080/score/queryChannelScore2
+response
+<studentResponse>
+<score>98</score>
+<status>1</status>
+</studentResponse>
+ 
+http://localhost:8080/encode
+
