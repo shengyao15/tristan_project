@@ -1,0 +1,17 @@
+redis-server /usr/redis/redis-2.8.11/redis.conf
+redis-cli
+
+
+flushdb
+
+hmset md5 123 abc
+hgetall md5
+hlen md5
+
+config get db*
+
+
+
+
+
+
