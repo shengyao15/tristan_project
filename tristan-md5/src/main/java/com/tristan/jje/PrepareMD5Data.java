@@ -1,19 +1,22 @@
-package com.tristan.basic;
+package com.tristan.jje;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import com.tristan.basic.MD5Utils;
+
 import redis.clients.jedis.Jedis;
 
-public class Main {
+public class PrepareMD5Data {
 
 	public static Jedis jedis;
 
 	static {
-		jedis = new Jedis("192.168.1.105", 6379, 2 * 60 * 1000);
+		jedis = new Jedis("192.168.1.100", 6379, 2 * 60 * 1000);
 	}
 
 	/**
@@ -139,7 +142,7 @@ public class Main {
 		// prepareData("md5-10mix", 10, true);
 		// test("md5-6number","asdf654321");
 
-		// 2500条数据 = 1MB
+		// 25000条数据 = 1MB
 		// System.out.println(Math.pow(9, 6)/25000 + "MB"); //21.25764MB
 		// System.out.println(Math.pow(9, 7)/(25000*1024) + "GB"); //0.18GB
 		// System.out.println(Math.pow(9, 6)/(25000*1024) + "GB"); //1.68GB
@@ -207,8 +210,16 @@ public class Main {
 		System.out.println("asdf654321 done  " + rawData.size());
 		generateMD5(rawData);
 
-		System.out.println("done");
-
+		//XX+6number
+		prepareRowDataString(rawData, "", "123456", 2);
+		prepareRowDataString(rawData, "", "654321", 2);
+		System.out.println("XX|6number done " + rawData.size());
+		generateMD5(rawData);
+		
+		//7number
+		prepareRowData1(rawData, "", 7);
+		System.out.println("7number  done " + rawData.size());
+		generateMD5(rawData);
 	}
 
 	private static void generateMD5(Set<String> rawData) {
@@ -222,7 +233,7 @@ public class Main {
 
 			if (i % 10000 == 0) {
 				jedis.hmset("md5", md5Map);
-				md5Map = new HashMap<String, String>();
+				md5Map.clear();
 			}
 		}
 		rawData.clear();
@@ -256,13 +267,38 @@ public class Main {
 	private static void prepareRowData1(Set<String> combination, String prefix, int length) {
 		long number = (long) Math.pow(10, length) * 5;
 		for (long i = 0; i < number; i++) {
-			String s = randomString(length);
+			String s = randomNumber(length);
 			combination.add(prefix + s);
+			if (i % 1000000 == 0) {
+				System.out.println(i);
+			}
 		}
 	}
 
-	public static String randomString(int length) {
+	private static void prepareRowDataString(Set<String> combination, String prefix, String suffix, int length) {
+		long number = (long) Math.pow(52, length) * 5;
+		for (long i = 0; i < number; i++) {
+			String s = randomString(length);
+			combination.add(prefix + s + suffix);
+		}
+	}
+	
+	public static String randomNumber(int length) {
 		String str = "0123456789";
+
+		Random random = new Random();
+		StringBuffer buf = new StringBuffer();
+
+		for (int i = 0; i < length; i++) {
+			int num = random.nextInt(str.length());
+			buf.append(str.charAt(num));
+		}
+
+		return buf.toString();
+	}
+	
+	public static String randomString(int length) {
+		String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 		Random random = new Random();
 		StringBuffer buf = new StringBuffer();
