@@ -37,7 +37,6 @@ public class TestA {
 		
 		List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "Dave");
 		List<String> filteredNames = names.stream().filter(e -> e.length() >= 4).collect(Collectors.toList());
-		//List<String> filteredNames = names.stream().filter(e -> e.length() >= 4).into(new ArrayList<String>());
 		for (String name : filteredNames) {
 		    System.out.println(name);
 		}

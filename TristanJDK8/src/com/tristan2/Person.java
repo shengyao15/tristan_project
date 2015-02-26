@@ -103,6 +103,8 @@ public class Person {
 		          .collect(Collectors.joining(" ; ")); // 在进一步的操作中可以作为标记(token)   
 		System.out.println(phpDevelopers);
 		
+		//方法引用是使用两个冒号::这个操作符号。
+		//可以用lambda表达式来取代
 		System.out.println("将 Java programmers 的 first name 存放到 Set:");
 		Set<String> javaDevFirstName = javaProgrammers
 		          .stream()

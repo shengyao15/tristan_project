@@ -1,0 +1,10 @@
+java8
+最多的两个特性是lambda和stream
+lambda用来解决匿名类问题， 适用于集合排序
+stream用来操作集合，和scala有点类似， 可以对集合做map reduce
+--reduce() 是将集合中所有值结合进一个，Reduce类似SQL语句中的sum(), avg() 或count(), 
+--如果要用原生的java来实现reduce很麻烦，要手动遍历集合，再做逻辑运算。 类似以前使用收集日志的功能
+
+filter(Predicate)
+forEach(Consumer)
+
