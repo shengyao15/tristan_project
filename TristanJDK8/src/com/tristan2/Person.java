@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * http://blog.csdn.net/renfufei/article/details/24600507
- * 
+ * http://www.codedata.com.tw/java/jdk8-functional-api/
  * @author tristan
  *
  */
