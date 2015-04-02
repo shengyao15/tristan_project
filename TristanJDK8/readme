@@ -1,10 +1,40 @@
-java8
-最多的两个特性是lambda和stream
-lambda用来解决匿名类问题， 适用于集合排序
-stream用来操作集合，和scala有点类似， 可以对集合做map reduce
---reduce() 是将集合中所有值结合进一个，Reduce类似SQL语句中的sum(), avg() 或count(), 
---如果要用原生的java来实现reduce很麻烦，要手动遍历集合，再做逻辑运算。 类似以前使用收集日志的功能
+java8 
+最多的两个特性是lambda和stream 
+1> lambda用来解决匿名类问题， 适用于集合排序 
+2> stream用来操作集合，和scala有点类似， 可以对集合做map reduce 
+还可以有类似SQL的groupingBy操作 
 
-filter(Predicate)
-forEach(Consumer)
+--reduce() 是将集合中所有值结合进一个，Reduce类似SQL语句中的sum(), avg() 或count() 
+--如果要用原生的java来实现reduce很麻烦，要手动遍历集合，再做逻辑运算。 类似以前使用收集日志的功能 
 
+3> 其他还有 Optional.ofNullable 可以忽略子对象为空的情况 
+
+4> stream中的map可以有效的将List<Person> personList 转成 List<String> nameList
+而不需要用for循环来先遍历一遍
+
+map(Function) 
+filter(Predicate) 
+forEach(Consumer) 
+
+Interface      	Argument	Return
+Consumer<T>	T	  	void
+Function<T,R>  	T        	R
+Predicate<T>   	T        	boolean
+Supplier<T>    	none     	T
+
+
+方法引用是使用两个冒号::这个操作符号,可以用lambda表达式来取代 
+调试peek方法，打印出内容，有点像js中的alert 
+
+
+Optional 
+有注意到，剛剛 Stream 的 findFirst 傳回的型態是 Optional 嗎？為什麼？因為也許過濾完每一行之後，沒有符合的條件。 
+那為什麼不傳回 null？嗯？Java 開發者最熟悉的 Exception 之一 NullPointerException 應該足以解釋傳回 Optional 而不是 null，JSR166 Java 並行 API 領導者 Doug Lea 討厭 null，快速排序發明者、圖靈獎得主 Tony Hoare 甚至說，null 的使用造成了數十億美元的損失。 
+Stream API 中有幾個方法都傳回 Optional，像是 findAny、findFirst、max、min、reduce 等方法。 
+
+max sum 就是reduce的一部分 
+sum()  reduce(0,(a,b)->a+b) 
+max()  reduce((max,len)->len>max?len:max) 
+
+collect是一种高级的reduce 
+可以用来groupby 

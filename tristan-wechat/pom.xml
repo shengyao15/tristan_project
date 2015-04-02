@@ -51,7 +51,7 @@
 				<version>2.4</version>
 				<configuration>
 					<outputDirectory>D:\baidu</outputDirectory>
-					<warName>ROOT</warName>
+					<warName>tristan-wechat</warName>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -1,13 +1,14 @@
-package com.tristan.basic;
+package com.tristan.jje;
 
 import redis.clients.jedis.Jedis;
 
-public class QueryMain {
+import com.tristan.basic.MD5Utils;
+
+public class TestMD5 {
 	public static Jedis jedis;
 
 	static {
-		//jedis = new Jedis("192.168.1.104", 6379);
-		jedis = new Jedis("172.24.212.47", 6379);
+		jedis = new Jedis("192.168.1.101", 6379);
 	}
 
 	public static void main(String[] args) {
